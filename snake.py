@@ -27,9 +27,10 @@ def motion():
         temp = background.create_rectangle(coords['end'][0], coords['end'][1], coords['end'][0]+10, coords['end'][1]+10, fill="#FF0", outline="#FF0")
         snake_body.append(temp)
         snake_dirs.append(snake_dirs[-1])
-        temp = [random.randint(0, 49)*10, random.randint(0, 49)*10]
-        coords['food'][0] = temp[0]
-        coords['food'][1] = temp[1]
+        while (coords['food'] == coords['head'] or coords['food'] in coords['body']):
+            temp = [random.randint(0, 49)*10, random.randint(0, 49)*10]
+            coords['food'][0] = temp[0]
+            coords['food'][1] = temp[1]
         background.coords(food, temp[0], temp[1], temp[0]+10, temp[1]+10)
     else:
         coords['end'][0] += snake_dirs[-1][0]
